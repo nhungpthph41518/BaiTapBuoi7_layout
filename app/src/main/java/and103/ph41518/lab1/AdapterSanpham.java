@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.squareup.picasso.Picasso;
+
 
 import androidx.appcompat.app.AlertDialog;
 
@@ -107,14 +109,16 @@ public class AdapterSanpham extends BaseAdapter {
             }
         });
 
-
 //        String imageUrl = mList.get(position).getThumbnailUrl();
 //        Picasso.get().load(imageUrl).into(imgAvatar);
 ////        imgAvatar.setImageResource(imageId[position]);
+
+        String imageUrl = sanphamModels.get(position).getAvatar();
+        Picasso.get().load(imageUrl).into(imgAvatar);
+
         tvName.setText(String.valueOf(sanphamModels.get(position).getTen()));
 
         tvSoluong.setText(String.valueOf(sanphamModels.get(position).getSoluong()));
-
 
         tvGia.setText(String.valueOf(sanphamModels.get(position).getGia()));
 

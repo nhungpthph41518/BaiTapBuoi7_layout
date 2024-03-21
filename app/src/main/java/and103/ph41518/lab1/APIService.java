@@ -29,12 +29,4 @@ public interface APIService {
     @PUT("/api/update/{id}")
     Call<SanphamModel> updateSanpham(@Path("id") String id, @Body SanphamModel sanpham);
 
-    @Multipart
-    @POST("students/add")
-    Call<SanphamModel> addStudentPicker(
-            @Part("ten") RequestBody ten,
-            @Part("gia") RequestBody gia,
-            @Part("soluong") RequestBody soluong,
-            @Part MultipartBody.Part avatar);
-
 }

@@ -1,18 +1,23 @@
 package and103.ph41518.lab1;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.checkerframework.checker.units.qual.C;
@@ -32,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     List<SanphamModel> sanphamModels;
     AdapterSanpham adapterSanpham;
 
+    private static final int REQUEST_IMAGE_PICK = 1;
+    private ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,14 +122,20 @@ public class MainActivity extends AppCompatActivity {
         EditText edgia = view.findViewById(R.id.edtGiaSP);
         EditText edsoluong = view.findViewById(R.id.edtSoLuongSP);
 
+        EditText edLinkAnh = view.findViewById(R.id.edlinkanh);
+
+
         Button btnadd = view.findViewById(R.id.btnUPDATEup);
+
 
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String tenSP = editt.getText().toString();
-                String giaStr = edgia.getText().toString();
-                String soluongStr = edsoluong.getText().toString();
+                String tenSP = editt.getText().toString().trim();
+                String giaStr = edgia.getText().toString().trim();
+                String soluongStr = edsoluong.getText().toString().trim();
+                String linkanh = edLinkAnh.getText().toString().trim();
+
 
                 if (tenSP.isEmpty() || giaStr.isEmpty() || soluongStr.isEmpty()) {
                     Toast.makeText(MainActivity.this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
@@ -173,6 +186,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
         dialog.show();
     }
 
@@ -211,10 +226,14 @@ public class MainActivity extends AppCompatActivity {
         EditText edgia = view.findViewById(R.id.edtGiaSP);
         EditText edsoluong = view.findViewById(R.id.edtSoLuongSP);
         Button btnadd = view.findViewById(R.id.btnUPDATEup);
+//        imageView = view.findViewById(R.id.imageView);
+
+        EditText edlinkanh = view.findViewById(R.id.edlinkanh);
 
         editt.setText(sanpham.getTen());
         edgia.setText(String.valueOf(sanpham.getGia()));
         edsoluong.setText(String.valueOf(sanpham.getSoluong()));
+        edlinkanh.setText(String.valueOf(sanpham.getAvatar()));
 
         AlertDialog dialog = builder.create();
 
@@ -225,6 +244,7 @@ public class MainActivity extends AppCompatActivity {
                 String tenSP = editt.getText().toString();
                 String giaStr = edgia.getText().toString();
                 String soluongStr = edsoluong.getText().toString();
+                String linkanh = edlinkanh.getText().toString();
 
                 if (tenSP.isEmpty() || giaStr.isEmpty() || soluongStr.isEmpty()) {
                     Toast.makeText(MainActivity.this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
@@ -250,6 +270,8 @@ public class MainActivity extends AppCompatActivity {
                 sanpham.setTen(tenSP);
                 sanpham.setGia(gia);
                 sanpham.setSoluong(soluong);
+                sanpham.setAvatar(linkanh);
+//                sanpham.setAvatar();
 
                 Call<SanphamModel> call = apiService.updateSanpham(sanpham.get_id(), sanpham);
                 call.enqueue(new Callback<SanphamModel>() {
@@ -273,7 +295,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         dialog.show();
     }
+
+
+
 
 }
