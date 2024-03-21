@@ -1,19 +1,29 @@
 package and103.ph41518.lab1;
 
 public class SanphamModel {
-
     private String _id;
     private String ten;
     private double gia;
     private int soluong;
-    private boolean tonkho;
 
-    public SanphamModel(String _id, String ten, double gia, int soluong, boolean tonkho) {
-        this._id = _id;
+    private String avatar;
+
+    public SanphamModel(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public SanphamModel(String ten, double gia, int soluong) {
         this.ten = ten;
         this.gia = gia;
         this.soluong = soluong;
-        this.tonkho = tonkho;
     }
 
     public String get_id() {
@@ -48,11 +58,4 @@ public class SanphamModel {
         this.soluong = soluong;
     }
 
-    public boolean isTonkho() {
-        return tonkho;
-    }
-
-    public void setTonkho(boolean tonkho) {
-        this.tonkho = tonkho;
-    }
 }

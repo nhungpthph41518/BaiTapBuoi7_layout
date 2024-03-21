@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bgpink"
+    android:layout_width="410dp"
+    android:layout_height="500dp"
+    android:background="@drawable/khungbtn"
     android:orientation="vertical"
 
     >
@@ -13,9 +13,9 @@
         android:text="SẢN PHẨM"
         android:layout_gravity="center"
         android:textColor="@color/white"
-        android:layout_marginTop="150dp"
         android:textSize="30dp"
         android:textStyle="bold"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
         />
 
@@ -70,7 +70,7 @@
         />
 
     <LinearLayout
-        android:layout_width="400dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center"
@@ -112,6 +112,7 @@
         android:textSize="24dp"
         android:background="@drawable/khungbtn"
         android:textColor="@color/white"
+        android:layout_marginBottom="20dp"
         />
 
 
